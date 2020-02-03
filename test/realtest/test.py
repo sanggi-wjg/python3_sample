@@ -37,6 +37,20 @@ if __name__ == '__main__':
     # _TestClass.print_cls_name()
     # print(escape_in_code('1-2 3.123'))
 
-    stdClass = object
-    stdClass.__setattr__('temp', '123')
-    print(stdClass.__getattribute__('temp'))
+    # stdClass = object
+    # stdClass.__setattr__('temp', '123')
+    # print(stdClass.__getattribute__('temp'))
+
+    def validate_kwargs(kwargs, allowed_kwargs, error_message = 'Keyword argument not understood:'):
+        for kwarg in kwargs:
+            print(kwarg)
+            if kwarg not in allowed_kwargs:
+                raise TypeError(error_message, kwarg)
+
+
+    def testFunc(**kwargs):
+        allowed_kwargs = { 'test' }
+        validate_kwargs(kwargs, allowed_kwargs)
+
+
+    testFunc(temp = '123')
