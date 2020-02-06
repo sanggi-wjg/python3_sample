@@ -34,20 +34,39 @@ def ret_path_to_file_info(path: str, returnTo: str):
     return file[0], file[1]
 
 
-if __name__ == '__main__':
-
+def pdf_save(pdfUrl: str, pdfPath: str, fileName: str):
     try:
-        urllib.request.urlretrieve(SAMPLE_PDF_IMAGE_URL_2, 'sample_waybill.pdf')
+        if not os.path.isdir(pdfPath):
+            raise NotADirectoryError(pdfPath + ' Is Not a Directory')
 
-        urlParse = ret_url_parse(SAMPLE_PDF_IMAGE_URL_2)
-        print(urlParse)
-        path = urlParse[2]
+        path = pdfPath + fileName + '.pdf'
+        urllib.request.urlretrieve(pdfUrl, path)
 
-        result = ret_path_to_file_info(path, 'filename')
-        print(result)
+        # urlParse = ret_url_parse(pdfUrl)
+        # print(urlParse)
+        # path = urlParse[2]
+        #
+        # result = ret_path_to_file_info(path, 'filename')
+        # print(result)
 
     except urllib.error.HTTPError as e:
         print('urllib.HTTPError Error (LINE) :', e.__traceback__.tb_lineno, ' (MSG) : ', e)
 
+    except NotADirectoryError as e:
+        print('NotADirectoryError Error (LINE) :', e.__traceback__.tb_lineno, ' (MSG) : ', e)
+
     except Exception as e:
         print('Exception Error (LINE) :', e.__traceback__.tb_lineno, ' (MSG) : ', e)
+        # raise e
+
+
+if __name__ == '__main__':
+    try:
+        pdf_save(
+            pdfUrl = SAMPLE_PDF_IMAGE_URL_2,
+            pdfPath = '/home/python_test/open_source_lib/pdf_t11o_png/',
+            fileName = 'sample_waybill'
+        )
+
+    except Exception as e:
+        print('@@@ Exception Error (LINE) :', e.__traceback__.tb_lineno, ' (MSG) : ', e)
