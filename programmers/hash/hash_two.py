@@ -11,9 +11,8 @@ def solution(phone_book):
 
 if __name__ == '__main__':
     print(solution(["119", "97674223", "1195524421"]))
-
     print(solution(["123", "456", "789"]))
-
     print(solution(["12", "123", "1235", "567", "88"]))
 
-    # print(solution(["123", "12", "1235", "567", "88"]))
+    print(list(p for p in ["12", "123", "1235", "567", "88"]))
+    print(p for p in ["12", "123", "1235", "567", "88"])
