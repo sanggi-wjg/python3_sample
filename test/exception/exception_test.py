@@ -57,30 +57,39 @@ def get_exception_msg(code: int, *args) -> str:
         return 'Invalid Exception Msg Code : ' + str(code)
 
 
+def check_for_unexpected_keys(name, input_dict, expected_values):
+    unknown = set(input_dict.keys()).difference(expected_values)
+    if unknown:
+        raise ValueError('Unknown entries in {} dictionary: {}. Only expected following keys: {}'.format(name, list(unknown), expected_values))
+
+
 if __name__ == '__main__':
 
     try:
-        # raise HttpResponseError
-        # raise HttpResponseError('123')
-        # raise ValueError
+        check_for_unexpected_keys('Check_Dictionary : ', { "abc": 'a' }, { 'abc' })  # Success
+        check_for_unexpected_keys('Check_Dictionary : ', { "abc": 'a' }, { '123' })  # Failure : Unknown entries in Check_Dictionary :  dictionary: ['abc']. Only expected following keys: {'123'}
 
-        print('[1-lack]', get_exception_msg(1000))
-        print('[2-ok]', get_exception_msg(1000, 'Hello'))
-        print('[3-ex]', get_exception_msg(1000, 'Hello', 'World'))
-
-        print('[4-ok]', get_exception_msg(1010))
-        print('[5-ex]', get_exception_msg(1010, 'Hello'))
-        print('[6-ex]', get_exception_msg(1010, 'Hello', 'World'))
-
-        print('[7-lack]', get_exception_msg(1020))
-        print('[8-lack]', get_exception_msg(1020, 'Hello'))
-        print('[9-ok]', get_exception_msg(1020, 'Hello', 'World'))
-
-    except HttpResponseError as hre:
-        print('[Error] : ' + hre.__str__())
-
-    except ValueError as ve:
-        print('[Error] : ' + ve.__str__())
-
+    #     # raise HttpResponseError
+    #     # raise HttpResponseError('123')
+    #     # raise ValueError
+    #
+    #     print('[1-lack]', get_exception_msg(1000))
+    #     print('[2-ok]', get_exception_msg(1000, 'Hello'))
+    #     print('[3-ex]', get_exception_msg(1000, 'Hello', 'World'))
+    #
+    #     print('[4-ok]', get_exception_msg(1010))
+    #     print('[5-ex]', get_exception_msg(1010, 'Hello'))
+    #     print('[6-ex]', get_exception_msg(1010, 'Hello', 'World'))
+    #
+    #     print('[7-lack]', get_exception_msg(1020))
+    #     print('[8-lack]', get_exception_msg(1020, 'Hello'))
+    #     print('[9-ok]', get_exception_msg(1020, 'Hello', 'World'))
+    #
+    # except HttpResponseError as hre:
+    #     print('[Error] : ' + hre.__str__())
+    #
+    # except ValueError as ve:
+    #     print('[Error] : ' + ve.__str__())
+    #
     except BaseException as be:
-        print('[Error] : ' + be.__str__())
+        print(be.__str__())
