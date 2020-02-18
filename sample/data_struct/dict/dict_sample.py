@@ -5,6 +5,8 @@ if __name__ == '__main__':
     for k in keys:
         each.__setitem__(k, { 'a': 1, 'b': 2 })
 
+    print(each.get('test3'))
+
     print(each)
 
     print(
@@ -23,4 +25,3 @@ if __name__ == '__main__':
             }
         }
     )
-
