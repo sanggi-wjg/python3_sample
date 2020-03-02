@@ -61,38 +61,25 @@ def ret_add_date_format(type: str = '', subtract: int = '', timeFormat: str = '%
     return result.strftime(timeFormat)
 
 
-test = {
-    'Response':
-        {
-            'code'   : '3001',
-            'success': 'false',
-            'reason' : '处理失败.请求校验签名失败'
-        }
-}
+def make_param():
+    xml = '<?xml version="1.0"?>' \
+          '<Request service="RouteService" lang="zh-CN">' \
+          '<Head>{}</Head>' \
+          '<Body><Route tracking_type="1" tracking_number="{}"/></Body>' \
+          '</Request>'.format('OSMS_1', '1234')
+    # print(xml)
 
-test = {
-    'ufinterface': {
-        'Result': {
-            'WaybillProcessInfo': [
-                { 'Waybill_No': 'YTG000838706720', 'Upload_Time': '2020/02/27 11:28:40', 'ProcessInfo': '【当地快递公司】 已收件 取件人: HW韩国国际3部1 (95554)' },
-                { 'Waybill_No': 'YTG000838706720', 'Upload_Time': '2020/02/27 19:18:55', 'ProcessInfo': '韩国仁川国际转运仓,已收入' },
-                { 'Waybill_No': 'YTG000838706720', 'Upload_Time': '2020/02/28 05:21:43', 'ProcessInfo': '韩国仁川国际转运仓,上车扫描' },
-                { 'Waybill_No': 'YTG000838706720', 'Upload_Time': '2020/02/28 07:03:26', 'ProcessInfo': '韩国仁川,航班起飞' },
-                { 'Waybill_No': 'YTG000838706720', 'Upload_Time': '2020/02/28 09:41:09', 'ProcessInfo': '上海,航班到达' },
-                { 'Waybill_No': 'YTG000838706720', 'Upload_Time': '2020/02/28 12:59:27', 'ProcessInfo': '上海,目的地清关中' },
-                { 'Waybill_No': 'YTG000838706720', 'Upload_Time': '2020/03/01 13:28:23', 'ProcessInfo': '【上海市嘉定区江桥公司】 已收件 取件人: 高响 (17821805727)' },
-                { 'Waybill_No': 'YTG000838706720', 'Upload_Time': '2020/03/01 13:28:33', 'ProcessInfo': '【上海市嘉定区江桥】 已发出 下一站 【上海转运中心】' },
-                { 'Waybill_No': 'YTG000838706720', 'Upload_Time': '2020/03/01 18:22:16', 'ProcessInfo': '【上海转运中心公司】 已打包' },
-                { 'Waybill_No': 'YTG000838706720', 'Upload_Time': '2020/03/01 18:24:01', 'ProcessInfo': '【上海转运中心公司】 已收入' },
-                { 'Waybill_No': 'YTG000838706720', 'Upload_Time': '2020/03/01 19:17:43', 'ProcessInfo': '【上海转运中心】 已发出 下一站 【南昌转运中心】' }
-            ]
-        }
-    }
-}
+    xb = xml.encode('utf-8')
+    xb = base64.b64encode(xb)
+    print(xb.decode('utf-8'))
+    ###########################
 
-if 'Response' in test.keys():
-    code = test.get('Response').get('code')
-    success = test.get('Response').get('success')
-    reason = test.get('Response').get('reason')
+    xc = (xml + 'test').encode('utf-8')
+    m = hashlib.md5(xc)
+    print(m)
 
-    print(code, success, reason)
+    vs = base64.b64encode(m.digest())
+    print(vs)
+
+
+make_param()
