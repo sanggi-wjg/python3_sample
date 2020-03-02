@@ -1,6 +1,10 @@
+import datetime
+
 if __name__ == '__main__':
 
     try:
+        print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+
         raise TypeError('HA HA HA TEST TypeError')
         # raise Exception('HA HA HA TEST Exception')
 

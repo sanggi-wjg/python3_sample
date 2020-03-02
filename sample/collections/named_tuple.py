@@ -15,6 +15,16 @@ if __name__ == '__main__':
     for p in [bob, jane]:
         print(p)
 
+
+    def check(obj: Person):
+        if isinstance(obj, Person):
+            print(obj, 'is Person instance')
+        else:
+            print(obj, 'is not Person instance')
+
+
+    check(jane)
+
     print('#############################################')
     Point = collections.namedtuple('Point', ['x', 'y'])
     p1 = Point(11, 22)
