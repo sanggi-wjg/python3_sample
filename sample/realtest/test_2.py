@@ -60,26 +60,3 @@ def ret_add_date_format(type: str = '', subtract: int = '', timeFormat: str = '%
 
     return result.strftime(timeFormat)
 
-
-def make_param():
-    xml = '<?xml version="1.0"?>' \
-          '<Request service="RouteService" lang="zh-CN">' \
-          '<Head>{}</Head>' \
-          '<Body><Route tracking_type="1" tracking_number="{}"/></Body>' \
-          '</Request>'.format('OSMS_1', '1234')
-    # print(xml)
-
-    xb = xml.encode('utf-8')
-    xb = base64.b64encode(xb)
-    print(xb.decode('utf-8'))
-    ###########################
-
-    xc = (xml + 'test').encode('utf-8')
-    m = hashlib.md5(xc)
-    print(m)
-
-    vs = base64.b64encode(m.digest())
-    print(vs)
-
-
-make_param()
