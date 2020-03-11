@@ -1,33 +1,23 @@
-from dataclasses import dataclass
+from datetime import datetime
 
 
-def outer_func(msg):
-    def inner_func():
-        print(msg)
+def decorate_function(func):
+    def decorated():
+        print(datetime.now())
+        func()
 
-    return inner_func
-
-
-def decorator_func(origin_func):
-    def wrapper_func():
-        return origin_func()
-
-    return wrapper_func
+    return decorated
 
 
-def display():
-    print('display Method...')
+@decorate_function
+def main_function_1():
+    print("Main function 111111 Start")
 
 
 if __name__ == '__main__':
-    # print(outer_func('Hello'))
-    # outer_func('Hello')()
+    # main_function_1()
 
-    # deco_display = decorator_func(display)
-    # deco_display()
-
-    temp = dataclass
-    temp.abc = '123'
-
-    print(temp)
-    print(temp.abc)
+    a = { 1: 2 }
+    b = { 3: 4 }
+    a.update(b)
+    print(a)
