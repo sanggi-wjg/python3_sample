@@ -1,5 +1,11 @@
 from zeep import Client
 
+"""
+Required zeep
+
+pip install zeep
+"""
+
 URL = 'http://wsdl'
 
 client = Client(URL)
