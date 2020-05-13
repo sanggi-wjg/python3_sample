@@ -4,9 +4,6 @@ import urllib.request
 import urllib.parse
 import urllib.error
 
-SAMPLE_PDF_IMAGE_URL = 'http://www.africau.edu/images/default/sample.pdf'
-SAMPLE_PDF_IMAGE_URL_2 = 'http://importwaybillfile.oss-cn-zhangjiakou.aliyuncs.com/imWaybill_LP00165786832283.pdf?Expires=1584367242&OSSAccessKeyId=LTAI5pw3uQoCjCRE&Signature=fLMr2YH9%2BJRNXWjP0A5zTEp%2B4P0%3D'
-
 
 def ret_url_parse(url: str):
     """
@@ -40,7 +37,9 @@ def pdf_save(pdfUrl: str, pdfPath: str, fileName: str):
             raise NotADirectoryError(pdfPath + ' Is Not a Directory')
 
         path = pdfPath + fileName + '.pdf'
-        urllib.request.urlretrieve(pdfUrl, path)
+        result = urllib.request.urlretrieve(pdfUrl, path)
+        print(result[1])
+        # print(result[1].__doc__)
 
         # urlParse = ret_url_parse(pdfUrl)
         # print(urlParse)
@@ -52,6 +51,9 @@ def pdf_save(pdfUrl: str, pdfPath: str, fileName: str):
     except urllib.error.HTTPError as e:
         print('urllib.HTTPError Error (LINE) :', e.__traceback__.tb_lineno, ' (MSG) : ', e)
 
+    except urllib.error.URLError as e:
+        print('urllib.URLError Error (LINE) :', e.__traceback__.tb_lineno, ' (MSG) : ', e)
+
     except NotADirectoryError as e:
         print('NotADirectoryError Error (LINE) :', e.__traceback__.tb_lineno, ' (MSG) : ', e)
 
@@ -61,10 +63,14 @@ def pdf_save(pdfUrl: str, pdfPath: str, fileName: str):
 
 
 if __name__ == '__main__':
+    SAMPLE_PDF_IMAGE_URL = 'http://www.africau.edu/images/default/sample.pdf'
+    SAMPLE_PDF_IMAGE_URL_2 = 'http://importwaybillfile.oss-cn-zhangjiakou.aliyuncs.com/imWaybill_LP00165786832283.pdf?Expires=1584367242&OSSAccessKeyId=LTAI5pw3uQoCjCRE&Signature=fLMr2YH9%2BJRNXWjP0A5zTEp%2B4P0%3D'
+    SAMPLE_URL = 'http://cg-trade.cainiao.com/tfscom/TB1YoZwsAKWBuNjy1zjXXcOypXa.tfsprivate.pdf'
+
     try:
         pdf_save(
-            pdfUrl = SAMPLE_PDF_IMAGE_URL_2,
-            pdfPath = '/home/python_test/open_source_lib/pdf_t11o_png/',
+            pdfUrl = SAMPLE_URL,
+            pdfPath = '/home/python_test/open_source_lib/pdf_to_png/',
             fileName = 'sample_waybill'
         )
 

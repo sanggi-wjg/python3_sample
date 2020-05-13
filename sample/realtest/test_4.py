@@ -30,8 +30,14 @@ def ret_date_format(timeFormat: str = '%Y-%m-%d %H:%M:%S', strDate: str = '', st
 
 
 if __name__ == '__main__':
-    sample = '202004051501'
-    print(sample)
+    # sample = '202004051501'
+    # print(sample)
 
-    sample = ret_date_format(strDate = sample)
+    # sample = ret_date_format(strDate = sample)
     # print(is_valid_date_format(sample, '%Y-%m-%d %H:%M:%S'))
+
+    transferCompany = '03'
+    packageCnt = 1
+
+    if transferCompany != '03' or packageCnt != 1:
+        print('123')

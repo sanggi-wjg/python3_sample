@@ -49,14 +49,17 @@ def ret_subtract_date_format(subtractType: str = '', subtract: int = '', timeFor
     return result.strftime(timeFormat)
 
 
-# print(ret_subtract_date_format('hour', 1))
-
 def ret_add_date_format(type: str = '', subtract: int = '', timeFormat: str = '%Y-%m-%d %H:%M:%S'):
     if type == '-hour':
         result = datetime.today() - timedelta(hours = subtract)
+
+    elif type == '-day':
+        result = datetime.today() - timedelta(days = subtract)
 
     else:
         raise TypeError('Unknown Subtract Type')
 
     return result.strftime(timeFormat)
 
+
+print(ret_add_date_format('-day', 1, '%Y%m%d'))

@@ -11,13 +11,8 @@ def decorate_function(func):
 
 @decorate_function
 def main_function_1():
-    print("Main function 111111 Start")
+    print("Hello Python Decorator!")
 
 
 if __name__ == '__main__':
-    # main_function_1()
-
-    a = { 1: 2 }
-    b = { 3: 4 }
-    a.update(b)
-    print(a)
+    main_function_1()
