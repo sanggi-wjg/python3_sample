@@ -24,8 +24,7 @@ def retry_decorate(total_try_cnt: int = 5, sleep_time: int = 1, retryable_except
                 try:
                     result = func(*args, **kwargs)
                     print('[{}/{}] ({}) Result : {}'.format(cnt, total_try_cnt, func.__name__, result))
-                    if result:
-                        return result
+                    return result
 
                 except retryable_exceptions as e:
                     print('[{}/{}] ({}) Retry Exception : {}'.format(cnt, total_try_cnt, func.__name__, e))
@@ -51,7 +50,7 @@ def is_odd_number(test, *args, **kwargs):
     if rand_num % 2 == 0:
         raise ValueError('ValueError')
 
-    return True
+    #return True
 
 
 if __name__ == '__main__':
