@@ -1,5 +1,6 @@
 import functools
 import random
+import socket
 import sys
 import time
 import traceback
@@ -42,15 +43,15 @@ def retry_decorate(total_try_cnt: int = 5, sleep_time: int = 1, retryable_except
     return decorator
 
 
-@retry_decorate(total_try_cnt = 3, retryable_exceptions = (KeyError, ValueError))
+@retry_decorate(total_try_cnt = 3, retryable_exceptions = (socket.timeout, KeyError, ValueError))
 def is_odd_number(test, *args, **kwargs):
     rand_num = random.randint(1, 5)
     print('Rand Number', rand_num)
 
     if rand_num % 2 == 0:
-        raise ValueError('ValueError')
+        raise socket.timeout
 
-    #return True
+    return True
 
 
 if __name__ == '__main__':
