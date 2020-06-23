@@ -1,7 +1,7 @@
 from time import sleep
 
 
-class WeatherData(object):
+class SampleClass(object):
 
     def show(self, value):
         print('Current temperature ', value)
@@ -29,10 +29,10 @@ class Data(object):
 
 
 if __name__ == '__main__':
-    weatherData = WeatherData()
+    sample_class = SampleClass()
     data = Data()
 
     while True:
-        weatherData.show(data.weather)
+        sample_class.show(data.weather)
         data.weather = 1
         sleep(2)
