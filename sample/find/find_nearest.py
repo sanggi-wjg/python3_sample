@@ -15,6 +15,7 @@ if __name__ == '__main__':
 
     permuted_data = permutations(CARDS, 3)
     permuted_data = set(map(lambda x: tuple(sorted(x)), permuted_data))
+    print(permuted_data)
 
     psum = []
     for p in permuted_data:
