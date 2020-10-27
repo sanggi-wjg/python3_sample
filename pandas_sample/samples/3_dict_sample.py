@@ -11,5 +11,7 @@ df = pd.DataFrame({
 })
 print(df)
 
-for row in df.iterrows():
-    print(row)
+# for row in df.iterrows():
+#     print(row)
+
+print(df.describe())
