@@ -9,9 +9,9 @@ from diagrams.onprem.network import Nginx, Apache, Internet
 from diagrams.onprem.queue import Celery
 
 """
-https://diagrams.mingrammer.com/docs/getting-started
+https://diagrams.mingrammer.com
 """
-with Diagram("WMS zzz", show = False):
+with Diagram("Sample", show = False):
     user_web = EC2("Web")
 
     with Cluster('WEB SERVER'):
