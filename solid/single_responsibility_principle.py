@@ -1,4 +1,4 @@
-class Car:
+class Truck:
     id_number = None
     car_number = None
     owner_name = None
@@ -16,22 +16,22 @@ class Car:
 """
 
 
-class Car:
+class Truck:
     id_number = None
     owner_info = None
-    car_detail = None
+    detail_info = None
 
-    def __init__(self, id_number, owner_info: CarOwnerInfo, car_detail: CarDetail):
+    def __init__(self, id_number, owner_info: TruckOwnerInfo, detail_info: TruckDetailInfo):
         self.id_number = id_number
         self.owner_info = owner_info
-        self.car_detail = car_detail
+        self.detail_info = detail_info
 
 
-class CarOwnerInfo:
+class TruckOwnerInfo:
     car_number = None
     owner_name = None
 
 
-class CarDetail:
+class TruckDetailInfo:
     color = None
     wheel = None
