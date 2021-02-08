@@ -3,4 +3,4 @@ def sample_func(x):
 
 
 def test_answer():
-    assert sample_func(1) == 3
+    assert sample_func(2) == 3
