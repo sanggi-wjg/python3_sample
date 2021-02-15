@@ -1,4 +1,4 @@
-sample = ''
+stack = []
 
-if sample is not None:
-    print('@@@')
+print(len(stack))
+print(min(stack))
