@@ -1,6 +1,5 @@
-def test_sample(value):
-    assert value, 'Hana'
+def func_name():
+    print(self.__name__)
 
 
-if __name__ == '__main__':
-    test_sample(False)
+func_name()
